@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+from sistema import models
+
+# Aqui fica o registro do Usuário
+@admin.register(models.Usuario)
+class UsuarioAdmin(admin.ModelAdmin):
+    list_display = ('id', 'nome', 'sobrenome', 'email', 'ativo',)
