@@ -3,4 +3,4 @@ from sistema.models import Usuario
 
 class UsuarioForm(forms.ModelForm):
     model = Usuario # Define qual é o model que o form representa.
-    fields = ['nome', 'sobrenome', 'cpf', 'telefone', 'email', 'endereco', 'imagem',] # São os campos que serão exibidos no fomr 
+    fields = ['nome', 'sobrenome', 'cpf', 'telefone', 'email', 'endereco', 'imagem',] # São os campos que serão exibidos no form (HTML)

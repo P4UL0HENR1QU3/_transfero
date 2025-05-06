@@ -1,12 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from usuarios.forms import UsuarioForm
 
 # Create your views here.
-
-def cadastro(request):
-    return render(
-        request,
-        'cadastro.html'
-    )
 
 def login(request):
     return render(
@@ -15,4 +10,22 @@ def login(request):
     )
 
 def criarUsuario(request):
-    pass
+    # Verificar se a requisição será do tipo GET ou POST 
+    if request.method ==  'POST':
+        form = UsuarioForm(request.POST, request.FILES)     
+        #Será criado um objeto Usuario(model) com os dados enviados
+        # post -> São os campos do forms (nome, sobrenome) preenchidos
+        # files -> Contém os arquivos ou e/imagen
+        if form.is_valid(): # Se os dados forem válidos, são salvos no BD.
+            form.save()
+            return redirect('/usuario/login')
+    
+    else:
+        # Se a requisição for GET, exibir o formulário de cadastro
+        form = UsuarioForm()
+
+    return render(
+        request,
+        'cadastro.html',
+        {'form': form}
+    )
