@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from sistema.models import Usuario
 from usuarios.forms import UsuarioForm
 
 # Create your views here.
@@ -28,4 +29,34 @@ def criarUsuario(request):
         request,
         'cadastro.html',
         {'form': form}
+    )
+
+
+def cadastrarUsuario(request):
+
+    if request.method == "POST":
+        form = UsuarioForm(request.POST, request.FILES)     
+        if form.is_valid(): 
+            form.save()
+            return redirect('listarusuarios')
+    else:
+        form = UsuarioForm()
+
+    return render(
+        request,
+        'usuarios/cadastro.html',
+        {'form': form},
+    )
+
+def listarUsuarios(request):
+    usuarios = Usuario.objects.all() 
+
+    context = {
+        'usuarios': usuarios,
+    }
+
+    return render(
+        request,
+        'usuarios/listar.html',
+        context,
     )
