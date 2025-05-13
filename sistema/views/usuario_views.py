@@ -12,7 +12,7 @@ def listarUsuarios(request):
 
     return render(
         request,
-        'usuarios/listar-usuario.html',
+        'usuarios/listar.html',
         context,
     )
 
