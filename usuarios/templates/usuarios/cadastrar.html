@@ -1,5 +1,7 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head> {% include "partials/_head.html" %} </head>
     
 <body>
@@ -25,9 +27,13 @@
 <main class="cadastro-body">
 <div class="container-cadastro">
     <form action="POST" class="cadastro-form">
+    <div class="sessao-usuario">
     <h3>Nome</h3>
     <input type="Nome" placeholder="Enter First Name" required>
+    </div>
+    <div class="sessao-usuario">
     <input type="Sobrenome" placeholder="Enter Last Name" required>
+    </div>
     <input type="Email" placeholder="Enter your Email" required>
     <select>
         <option value=""></option>
@@ -36,24 +42,23 @@
     <input type="CPF" placeholder="Enter your CPF" required>
     <input type="Senha" placeholder="Enter your Password" required>
 
+    <div class="sessao-usuario">
     <div class="aceitar-termos">
-    <p>I agree</p>
     <input type="checkbox" id="" name="">
+    <p>I agree with Terms of Use and Privacy Policy</p>
+    </div>
     </div>
     <button class="btn-primary" type="submit">
         Cadastrar
       </button>
-
-
-
-
     </form>
 </div>
 
 <style>
 
 .cadastro-body {
-
+    box-sizing: border-box;
+    
 }
 
 .titulo-cadastro {
@@ -72,7 +77,7 @@
     padding: 48px;
     text-align: center;
     max-width: 500px;
-    
+    float: left;
 }
 
 .cadastro-form input {
@@ -97,6 +102,18 @@
     .btn-primary:hover {
         background-color: #b00610;
     }
+
+.sessao-usuario {
+    display: inline;
+}
+
+.sessao-usuario h3 {
+    float: left;
+}
+
+.aceitar-termos p {
+    color: #fff;
+}
 
 </style>
 
